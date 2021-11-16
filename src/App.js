@@ -6,6 +6,12 @@ function App() {
   const [text, setText] = useState('');
   const [query, setQuery] = useState('apple');
 
+// class App extends React.Component{
+//   constructor(props){
+//     super(props)
+//     this.state={query: new Query()};
+//   }
+
   useEffect(() => {
     console.log('run useEffect');
     fetch(`https://api.unsplash.com/search/photos?query=${query}&client_id=${process.env.REACT_APP_CLIENT_ID}`)
@@ -22,7 +28,7 @@ function App() {
     setText('');
     console.log('called onSubmit');
   }
-
+// render(){
   return (
     <div className="App">
       <div className="main">
@@ -48,12 +54,12 @@ function App() {
               </div>
             </div>
             </div>
-
           ))
         }
       </div>   
     </div>
   )
 }
+// }
 
 export default App;
