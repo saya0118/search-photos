@@ -1,0 +1,64 @@
+.main {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.main input {
+  border: 3px solid #4F7836;
+  height: 40px;
+  width: 250px;
+  border-radius: 30px;
+  padding: 0 10px;
+  font-size: 18px;
+}
+
+.main input:focus {
+  outline: none;
+}
+
+.main button {
+  margin-left: 10px;
+  width: 80px;
+  height: 40px;
+  background-color: #4F7836;
+  border-style: none;
+  color: white;
+}
+
+.main button:hover {
+  cursor: pointer;
+}
+
+.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 3%;
+}
+
+.container .card {
+  background: #fff;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 2px 5px #ccc;
+          box-shadow: 0 2px 5px #ccc;
+}
+
+.container .card .card-img {
+  border-radius: 5px 5px 0 0;
+  max-width: 100%;
+  height: auto;
+}
+
+.container .card .card-content {
+  padding: 20px;
+}
+
+.container .card .card-content .card-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+/*# sourceMappingURL=App.css.map */

@@ -1,0 +1,63 @@
+.main{
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+
+  input{
+    border: 3px solid #4F7836;
+    height: 40px;
+    width: 250px;
+    border-radius: 30px;
+    padding: 0 10px;
+    font-size: 18px;
+
+    &:focus{
+      outline: none;
+    }
+
+  }
+
+    button{
+      margin-left: 10px;
+      width: 80px;
+      height: 40px;
+      background-color: #4F7836;
+      border-style: none;
+      color: white;
+
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  
+}
+
+.container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3%;
+
+  .card{
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #ccc;
+
+    .card-img{
+      border-radius: 5px 5px 0 0;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .card-content{
+      padding: 20px;
+
+      .card-title{
+        font-size: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #333;
+      }
+    }
+  }
+}
+
