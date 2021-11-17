@@ -1,60 +1,73 @@
-.main {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  text-align: center;
-}
+body {
+  background-color: #f3c323; }
+  body .main {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center; }
+    body .main h1 {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color: #3d2f11; }
+      @media (max-width: 768px) {
+        body .main h1 {
+          font-size: 25px; } }
+    body .main input {
+      border: 3px solid #3d2f11;
+      height: 40px;
+      width: 250px;
+      border-radius: 20px;
+      padding: 0 10px;
+      font-size: 18px; }
+      @media (max-width: 768px) {
+        body .main input {
+          border: 2px solid #3d2f11;
+          width: 200px;
+          height: 30px; } }
+      body .main input:focus {
+        outline: none; }
+    body .main button {
+      margin-left: 10px;
+      width: 80px;
+      height: 40px;
+      background-color: #fff7dd;
+      border-style: none;
+      color: #3d2f11;
+      border-radius: 20px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-weight: bold;
+      box-shadow: 2px 2px 0 0;
+      text-shadow: -1px -1px 1px #f3c323; }
+      @media (max-width: 768px) {
+        body .main button {
+          font-size: 10px;
+          width: 50px;
+          height: 30px;
+          border-radius: 10px;
+          transition: 0.5s; } }
+      body .main button:hover {
+        cursor: pointer;
+        background-color: #e47a34; }
+      body .main button:active {
+        box-shadow: none;
+        transform: translate(0, 2px);
+        transition: 1s; }
+  body .container {
+    margin: 10px 10%; }
+    @media (max-width: 768px) {
+      body .container List {
+        columns: 2; } }
+    body .container .card {
+      border-radius: 5px;
+      box-shadow: 0 2px 5px #ccc; }
+      body .container .card .card-img {
+        border-radius: 5px 5px 0 0;
+        max-width: 100%;
+        height: auto; }
+      body .container .card .card-content {
+        padding: 20px; }
+        body .container .card .card-content .card-title {
+          font-size: 20px;
+          margin-bottom: 20px;
+          text-align: center;
+          color: #333; }
 
-.main input {
-  border: 3px solid #4F7836;
-  height: 40px;
-  width: 250px;
-  border-radius: 30px;
-  padding: 0 10px;
-  font-size: 18px;
-}
-
-.main input:focus {
-  outline: none;
-}
-
-.main button {
-  margin-left: 10px;
-  width: 80px;
-  height: 40px;
-  background-color: #4F7836;
-  border-style: none;
-  color: white;
-}
-
-.main button:hover {
-  cursor: pointer;
-}
-
-.container {
-  width: 100%;
-}
-
-.container .card {
-  background: #fff;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 2px 5px #ccc;
-          box-shadow: 0 2px 5px #ccc;
-}
-
-.container .card .card-img {
-  border-radius: 5px 5px 0 0;
-  max-width: 100%;
-  height: auto;
-}
-
-.container .card .card-content {
-  padding: 20px;
-}
-
-.container .card .card-content .card-title {
-  font-size: 20px;
-  margin-bottom: 20px;
-  text-align: center;
-  color: #333;
-}
 /*# sourceMappingURL=App.css.map */

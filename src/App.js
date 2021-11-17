@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import './App.css';
 import axios from 'axios';
 import ImageList from './imageList';
+import FavList from './fav.List';
 
 class App extends React.Component{
   state = {images: [], text: '', query:'apple', fav:[]}
@@ -65,6 +66,7 @@ onSubmit = (e) => {
     return (
       <div className="App">
         <div className="main">
+          <h1>Search your favorite photos!</h1>
           <form onSubmit={this.onSubmit}>
             <input
             type="text"

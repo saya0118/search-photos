@@ -1,14 +1,16 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import List from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+// import ImageListItemBar from '@mui/material/ImageListItemBar';
+// import IconButton from '@mui/material/IconButton';
+// import StarBorderIcon from '@mui/icons-material/StarBorder';
 
-const ImageList = (props) => {
-    console.log(props)
+function ImageList (props) {
     return(
         <div className="container">
             <Box sx={{ width: "100%", height: "100vh", overflowY: 'scroll' }}>
-            <List variant="masonry" cols={3} gap={8}>
+            <List variant="masonry"cols={2} gap={8}>
                 {props.images.map((image) => (
             <ImageListItem key={image.id}>
             <img
@@ -17,7 +19,24 @@ const ImageList = (props) => {
               alt={image.alt_description}
               loading="lazy"
             />
-          </ImageListItem>
+            {/* <ImageListItemBar
+            sx={{
+              background:
+                'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+                'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+            }}
+            position="top"
+            actionIcon={
+              <IconButton
+                sx={{ color: 'white' }}
+                aria-label={`star ${item.title}`}
+              >
+                <StarBorderIcon />
+              </IconButton>
+            }
+            actionPosition="left"
+          /> */}
+            </ImageListItem>
             ))}
             </List>
             </Box>
