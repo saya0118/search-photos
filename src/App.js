@@ -3,6 +3,8 @@ import './App.css';
 import axios from 'axios';
 import ImageList from './imageList';
 import FavList from './favList';
+import Icon from './Icon';
+import FavoriteIcon from '@mui/icons-material/Favorite'
 
 class App extends React.Component{
   state = {images: [], text: '', query:'apple', fav:[]}
@@ -70,16 +72,21 @@ onSubmit = (e) => {
       <div className="App">
         <div className="main">
           <h1>Search your favorite photos!</h1>
+          <div className="nav">
           <form onSubmit={this.onSubmit}>
             <input
             type="text"
             onChange={e => this.setState({text: e.target.value})}
             value={this.state.text}
             />
-            <button type="submit">
+            <button className="search-button" type="submit">
               Search
             </button>
           </form>
+            <button className="fav-button" type="submit">
+            <FavoriteIcon sx={{color: 'deeppink'}}/>Saved
+            </button>
+            </div>
         </div>  
 
         <ImageList images={this.state.images}/>

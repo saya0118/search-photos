@@ -6,6 +6,7 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import Icon from './Icon';
 
 function ImageList (props) {
   const [favIcon, setFavIcon] = useState();
@@ -16,15 +17,7 @@ function ImageList (props) {
     // favIcon === <FavoriteIcon/> ? 
     // this.setState{{favImage:this.state.images}} :
     
-    // IconButton === <FavoriteIcon/> ? <FavoriteBorderIcon/> : <FavoriteIcon/>
   }, [favIcon])
-
-  const onClick = (e) => {
-        console.log("click");
-        e.preventDefault();
-        favIcon === <FavoriteIcon/> ? <FavoriteBorderIcon/> : <FavoriteIcon/>
-        // this.setState({favImage:this.state.images.id})      
-      }
 
     return(
         <div className="container">
@@ -46,13 +39,7 @@ function ImageList (props) {
             }}
             position="top"
             actionIcon={
-              <IconButton
-                sx={{ color: 'white' }}
-                aria-label={`star ${image.title}`}
-                onClick={onClick}
-              >
-                <FavoriteBorderIcon/>
-              </IconButton>
+              <Icon/>
             }
             actionPosition="left"
           />

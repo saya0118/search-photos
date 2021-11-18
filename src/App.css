@@ -10,7 +10,7 @@ body {
       @media (max-width: 768px) {
         body .main h1 {
           font-size: 25px; } }
-    body .main input {
+    body .main .nav input {
       border: 3px solid #3d2f11;
       height: 40px;
       width: 250px;
@@ -18,13 +18,13 @@ body {
       padding: 0 10px;
       font-size: 18px; }
       @media (max-width: 768px) {
-        body .main input {
+        body .main .nav input {
           border: 2px solid #3d2f11;
           width: 200px;
           height: 30px; } }
-      body .main input:focus {
+      body .main .nav input:focus {
         outline: none; }
-    body .main button {
+    body .main .nav .search-button {
       margin-left: 10px;
       width: 80px;
       height: 40px;
@@ -37,19 +37,41 @@ body {
       box-shadow: 2px 2px 0 0;
       text-shadow: -1px -1px 1px #f3c323; }
       @media (max-width: 768px) {
-        body .main button {
+        body .main .nav .search-button {
           font-size: 10px;
           width: 50px;
           height: 30px;
           border-radius: 10px;
           transition: 0.5s; } }
-      body .main button:hover {
+      body .main .nav .search-button:hover {
         cursor: pointer;
         background-color: #e47a34; }
-      body .main button:active {
+      body .main .nav .search-button:active {
         box-shadow: none;
-        transform: translate(0, 2px);
-        transition: 1s; }
+        transform: translate(0, 2px); }
+    body .main .nav .fav-button {
+      float: right;
+      margin-right: 10%;
+      width: 80px;
+      height: 50px;
+      border-radius: 20px;
+      border: none;
+      box-shadow: gray 2px 2px 0 0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-weight: bold; }
+      @media (max-width: 768px) {
+        body .main .nav .fav-button {
+          font-size: 10px;
+          width: 50px;
+          height: 50px;
+          border-radius: 10px;
+          transition: 0.5s; } }
+      body .main .nav .fav-button:hover {
+        cursor: pointer;
+        background-color: #fff; }
+      body .main .nav .fav-button:active {
+        box-shadow: none;
+        transform: translate(0, 2px); }
   body .container {
     margin: 10px 10%; }
     @media (max-width: 768px) {
