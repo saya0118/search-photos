@@ -1,5 +1,5 @@
 import React from 'react';
-import './src/App.css';
+import '../App.css';
 
 import axios from 'axios';
 import {BrowserRouter, Route} from 'react-router-dom';
@@ -11,16 +11,16 @@ import FavList from './favList';
 class App extends React.Component{
   render(){
     return (
-      <BrowserRouter>
+      // <BrowserRouter>
       <div className="App"> 
-        <Route exact path="./">
+        {/* <Route exact path="./"> */}
           <Home/>
-        </Route>
-        <Route path="./favorite">
+        {/* </Route> */}
+        {/* <Route path="./favorite"> */}
           <FavList/>
-        </Route>
+        {/* </Route> */}
       </div>
-      </BrowserRouter>
+      // </BrowserRouter>
     )
   }
 }

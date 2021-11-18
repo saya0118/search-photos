@@ -9,12 +9,12 @@ const Home = () => {
     return (
         <div className="Home">
             <Navigation />
-            <Link to="FavList" />
+            {/* <Link to="FavList" /> */}
             <button className="fav-button" type="submit">
                 <FavoriteIcon sx={{color: 'deeppink'}}/>
                 Saved
             </button>
-            <ImageList images={this.state.images}/>
+            <ImageList/>
         </div>
     )
 }

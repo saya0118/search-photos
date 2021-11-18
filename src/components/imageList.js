@@ -8,6 +8,7 @@ import Icon from './Icon';
 function ImageList (props) {
   const [favorite, setFavorite] = useState(false);
   const [favImage, setFavImage] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     console.log('run useEffect');
@@ -19,13 +20,16 @@ function ImageList (props) {
       console.log(data);
       setFavImage(data.results)
       })
-    
+    .catch(error => {
+      console.log(error);
+      setError(true)
+    })   
   }, [!favorite])
 
     return(
         <div className="container">
             <Box sx={{ width: "100%", height: "100vh", overflowY: 'scroll' }}>
-            <List variant="masonry"cols={2} gap={8}>
+            <List variant="masonry" cols={2} gap={8}>
                 {props.images.map((image) => (
             <ImageListItem key={image.id}>
             <img
