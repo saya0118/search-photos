@@ -56,18 +56,18 @@ class Navigation extends React.Component {
     
     render(){
         return(
-                <div className="main">
-                    <form onSubmit={this.onSubmit}>
-                        <input
-                        type="text"
-                        onChange={e => this.setState({text: e.target.value})}
-                        value={this.state.text}
-                        />
-                        <button className="search-button" type="submit">
-                        Search
-                        </button>
-                    </form>
-                </div>
+          <div className="main">
+            <form onSubmit={this.onSubmit}>
+              <input
+                type="text"
+                onChange={e => this.setState({text: e.target.value})}
+                value={this.state.text}
+              />
+              <button className="search-button" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
         );
     }
 }
