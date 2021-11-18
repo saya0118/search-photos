@@ -3,15 +3,35 @@ import './App.css';
 import axios from 'axios';
 import ImageList from './imageList';
 
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+
 class App extends React.Component{
 
   state = {
     images: [],
+    favorites: [],
+
+    open: false,
     text: '',
     query:'apple',
   }
 
   componentDidMount(){
+
+    const savedImages = localStorage.getItem('favorites');
+    if (savedImages) {
+      this.setState({ favorites: JSON.parse(savedImages) });
+    }
+
     axios.get("https://api.unsplash.com/photos", {
       params:　{　per_page: 30　},
       headers: {
@@ -47,14 +67,60 @@ class App extends React.Component{
   onHandleLike = (index) => {
     const duplicatedImages = [...this.state.images];
     duplicatedImages[index].favorite = !duplicatedImages[index].favorite;
+
+    const allFavs = [...this.state.favorites, duplicatedImages[index]];
+    localStorage.setItem('favorites', JSON.stringify(allFavs));
+
     this.setState({
-      images: duplicatedImages
+      images: duplicatedImages,
+      favorites: [...this.state.favorites, duplicatedImages[index]]
     })
   }
 
+  toggleDrawer = (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    this.setState({ open: !this.state.open });
+  };
+
+  list = () => {
+
+    console.log(this.state.favorites)
+    return (
+      <Box
+          sx={{width: 250}}
+          role="presentation"
+          onClick={this.toggleDrawer}
+          onKeyDown={this.toggleDrawer}
+      >
+        <List>
+          {this.state.favorites.map(x =>
+              <ListItem button key={x.id}>
+                <ListItemIcon>
+                  <InboxIcon/>
+                </ListItemIcon>
+                <ListItemText primary={x.alt_description}/>
+              </ListItem>
+          )}
+        </List>
+      </Box>
+    )
+  };
+
   render(){
+
     return (
       <div className="App">
+        <Button onClick={this.toggleDrawer}>Click</Button>
+        <Drawer
+            anchor="right"
+            open={this.state.open}
+            onClose={this.toggleDrawer}
+        >
+          {this.list()}
+        </Drawer>
         <div className="main">
           <h1>Search your favorite photos!</h1>
           <form onSubmit={this.onSubmit}>
