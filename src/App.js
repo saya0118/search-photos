@@ -1,18 +1,13 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
-import ImageList from './imageList';
 
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
+import ImageList from './imageList';
+import FabList from './FavList';
+import Snackbar from './Snackbar';
+
 import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+
 
 class App extends React.Component{
 
@@ -21,6 +16,10 @@ class App extends React.Component{
     favorites: [],
 
     open: false,
+    snackbar: {
+      open: false,
+      type: "added"
+    },
     text: '',
     query:'apple',
   }
@@ -39,7 +38,7 @@ class App extends React.Component{
       }}
     ).then((response) => {
       const items = response.data.map(x => {
-        x.favorite = false;
+        x.favorite = !!JSON.parse(savedImages).some(y => x.id === y.id);
         return x
       })
       this.setState({images: items})
@@ -61,20 +60,58 @@ class App extends React.Component{
     }).then((response) => {
       this.setState({images: response.data.results})
     })
-    this.setState({text:''});
+    this.setState({ text:'' });
   }
 
   onHandleLike = (index) => {
     const duplicatedImages = [...this.state.images];
+
+    let allFavs = [];
+    if (duplicatedImages[index].favorite) {
+      allFavs = this.state.favorites.filter(x => x.id !== duplicatedImages[index].id);
+      this.setState({
+        snackbar: {
+          open: true,
+          type: 'removed'
+        },
+      })
+    } else {
+      allFavs = [...this.state.favorites, duplicatedImages[index]];
+      this.setState({
+        snackbar: {
+          open: true,
+          type: 'added'
+        },
+      })
+    }
+
     duplicatedImages[index].favorite = !duplicatedImages[index].favorite;
 
-    const allFavs = [...this.state.favorites, duplicatedImages[index]];
     localStorage.setItem('favorites', JSON.stringify(allFavs));
 
     this.setState({
       images: duplicatedImages,
-      favorites: [...this.state.favorites, duplicatedImages[index]]
+      favorites: allFavs,
     })
+  }
+
+  onHandleDelete = (item) => {
+    const filteredFavorites = this.state.favorites.filter(x => x.id !== item.id);
+    const filteredImages = this.state.images.map(x => {
+      if (x.id === item.id) x.favorite = false;
+      return x
+    })
+
+    this.setState({
+      favorites: filteredFavorites,
+      images: filteredImages,
+      snackbar: {
+        open: true,
+        type: 'removed'
+      },
+    });
+
+    localStorage.setItem("favorites", JSON.stringify(filteredFavorites));
   }
 
   toggleDrawer = (event) => {
@@ -85,42 +122,19 @@ class App extends React.Component{
     this.setState({ open: !this.state.open });
   };
 
-  list = () => {
-
-    console.log(this.state.favorites)
-    return (
-      <Box
-          sx={{width: 250}}
-          role="presentation"
-          onClick={this.toggleDrawer}
-          onKeyDown={this.toggleDrawer}
-      >
-        <List>
-          {this.state.favorites.map(x =>
-              <ListItem button key={x.id}>
-                <ListItemIcon>
-                  <InboxIcon/>
-                </ListItemIcon>
-                <ListItemText primary={x.alt_description}/>
-              </ListItem>
-          )}
-        </List>
-      </Box>
-    )
-  };
-
   render(){
-
     return (
       <div className="App">
-        <Button onClick={this.toggleDrawer}>Click</Button>
-        <Drawer
-            anchor="right"
+        <Snackbar snackbar={this.state.snackbar} handleClose={() => this.setState({snackbar: {
+            open: false,
+            type: 'success'
+          }})}/>
+        <FabList
+            favorites={this.state.favorites}
             open={this.state.open}
-            onClose={this.toggleDrawer}
-        >
-          {this.list()}
-        </Drawer>
+            onToggle={this.toggleDrawer}
+            onHandleDelete={this.onHandleDelete}/>
+        <Button onClick={this.toggleDrawer}>Favorites</Button>
         <div className="main">
           <h1>Search your favorite photos!</h1>
           <form onSubmit={this.onSubmit}>
@@ -142,3 +156,5 @@ class App extends React.Component{
 }
 
 export default App;
+
+
