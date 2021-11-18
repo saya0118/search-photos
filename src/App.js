@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import axios from 'axios';
 import ImageList from './imageList';
-import FavList from './fav.List';
+import FavList from './favList';
 
 class App extends React.Component{
   state = {images: [], text: '', query:'apple', fav:[]}
@@ -59,7 +59,10 @@ onSubmit = (e) => {
   this.setState({text:''});
 
   // console.log('called onSubmit');
-}
+} 
+// catch (err) {
+  
+// }
 
   render(){
     console.log(this.state)

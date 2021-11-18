@@ -2,11 +2,30 @@ import React, {useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import List from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-// import ImageListItemBar from '@mui/material/ImageListItemBar';
-// import IconButton from '@mui/material/IconButton';
-// import StarBorderIcon from '@mui/icons-material/StarBorder';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import IconButton from '@mui/material/IconButton';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function ImageList (props) {
+  const [favIcon, setFavIcon] = useState();
+  const [favImage, setFavImage] = useState([]);
+
+  useEffect(() => {
+    console.log('run useEffect');
+    // favIcon === <FavoriteIcon/> ? 
+    // this.setState{{favImage:this.state.images}} :
+    
+    // IconButton === <FavoriteIcon/> ? <FavoriteBorderIcon/> : <FavoriteIcon/>
+  }, [favIcon])
+
+  const onClick = (e) => {
+        console.log("click");
+        e.preventDefault();
+        favIcon === <FavoriteIcon/> ? <FavoriteBorderIcon/> : <FavoriteIcon/>
+        // this.setState({favImage:this.state.images.id})      
+      }
+
     return(
         <div className="container">
             <Box sx={{ width: "100%", height: "100vh", overflowY: 'scroll' }}>
@@ -19,7 +38,7 @@ function ImageList (props) {
               alt={image.alt_description}
               loading="lazy"
             />
-            {/* <ImageListItemBar
+            <ImageListItemBar
             sx={{
               background:
                 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
@@ -29,13 +48,14 @@ function ImageList (props) {
             actionIcon={
               <IconButton
                 sx={{ color: 'white' }}
-                aria-label={`star ${item.title}`}
+                aria-label={`star ${image.title}`}
+                onClick={onClick}
               >
-                <StarBorderIcon />
+                <FavoriteBorderIcon/>
               </IconButton>
             }
             actionPosition="left"
-          /> */}
+          />
             </ImageListItem>
             ))}
             </List>
