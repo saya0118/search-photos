@@ -3,21 +3,24 @@ import Box from '@mui/material/Box';
 import List from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import IconButton from '@mui/material/IconButton';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import Icon from './Icon';
 
 function ImageList (props) {
-  const [favIcon, setFavIcon] = useState();
+  const [favorite, setFavorite] = useState(false);
   const [favImage, setFavImage] = useState([]);
 
   useEffect(() => {
     console.log('run useEffect');
     // favIcon === <FavoriteIcon/> ? 
     // this.setState{{favImage:this.state.images}} :
+    fetch(`https://api.unsplash.com/fav&client_id=${process.env.REACT_APP_CLIENT_ID}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      setFavImage(data.results)
+      })
     
-  }, [favIcon])
+  }, [!favorite])
 
     return(
         <div className="container">
