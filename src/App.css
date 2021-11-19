@@ -51,7 +51,7 @@ body {
           height: 30px; } }
       body .main input:focus {
         outline: none; }
-    body .main .search-button {
+    body .main button {
       margin-left: 10px;
       width: 80px;
       height: 40px;
@@ -64,17 +64,17 @@ body {
       box-shadow: 2px 2px 0 0;
       text-shadow: -1px -1px 1px #f3c323; }
       @media (max-width: 768px) {
-        body .main .search-button {
+        body .main button {
           font-size: 10px;
           width: 50px;
           height: 30px;
           border-radius: 10px;
           transition: 0.5s; } }
-      body .main .search-button:hover {
+      body .main button:hover {
         cursor: pointer;
         background-color: #e47a34;
         transition: 0.5s; }
-      body .main .search-button:active {
+      body .main button:active {
         box-shadow: none;
         transform: translate(0, 2px); }
   body .container {

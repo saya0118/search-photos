@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import axios from 'axios';
 import Icon from './Icon';
+import {Link} from 'react-router-dom';
 
 const FavList = props => {
 
@@ -16,8 +17,9 @@ const FavList = props => {
         <div className="main">
         <div className="nav">
           <h1>My favorite photos!</h1>
-          
-          <button><a>Go Back</a></button>
+          <Link to="/">
+          <button>Go Back</button>
+          </Link>
         </div>  
 
         <div className="container">
