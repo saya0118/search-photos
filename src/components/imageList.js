@@ -6,24 +6,24 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import Icon from './Icon';
 
 function ImageList (props) {
-  const [favorite, setFavorite] = useState(false);
-  // const [images, setImages] = useState([]);
-  const [favImage, setFavImage] = useState([]);
-  const [error, setError] = useState(false);
+  // const [favorite, setFavorite] = useState(false);
+  const [images, setImages] = useState([]);
+  // const [favImage, setFavImage] = useState([]);
+  // const [error, setError] = useState(false);
 
-  // useEffect(() => {
-  //   console.log('run useEffect');
-  //   fetch(`https://api.unsplash.com/search/photos?query="apple"&client_id=${process.env.REACT_APP_CLIENT_ID}`)
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     console.log(data);
-  //     // setImages(data.results)
-  //     })
-  //   // .catch(error => {
-  //   //   console.log(error);
-  //   //   setError(true);
-  //   // })   
-  // }, [!favorite])
+  useEffect(() => {
+    console.log('run useEffect');
+    fetch(`https://api.unsplash.com/search/photos?query=${props.query}&client_id=${process.env.REACT_APP_CLIENT_ID}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      setImages(data.results)
+      })
+    // .catch(error => {
+    //   console.log(error);
+    //   setError(true);
+    // })   
+  }, [props.query])
 
     return(
         <div className="container">
