@@ -7,22 +7,21 @@ import Icon from './Icon';
 
 function ImageList (props) {
   const [favorite, setFavorite] = useState(false);
+  const [images, setImages] = useState([]);
   const [favImage, setFavImage] = useState([]);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     console.log('run useEffect');
-    // favIcon === <FavoriteIcon/> ? 
-    // this.setState{{favImage:this.state.images}} :
     fetch(`https://api.unsplash.com/fav&client_id=${process.env.REACT_APP_CLIENT_ID}`)
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      setFavImage(data.results)
+      setImages(data.results)
       })
     .catch(error => {
       console.log(error);
-      setError(true)
+      setError(true);
     })   
   }, [!favorite])
 

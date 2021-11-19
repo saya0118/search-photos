@@ -57,6 +57,7 @@ class Navigation extends React.Component {
     render(){
         return(
           <div className="main">
+            <h1>Search your favorite photos!</h1>
             <form onSubmit={this.onSubmit}>
               <input
                 type="text"
