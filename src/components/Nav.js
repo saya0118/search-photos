@@ -36,8 +36,8 @@ class Navigation extends React.Component {
       // }, [query]
     // }
     
-    onSubmit = (e) => {
-      e.preventDefault();
+    // onSubmit = (e) => {
+    //   e.preventDefault();
       // this.setState({query:this.state.text});
       // axios.get("https://api.unsplash.com/search/photos", {
       //   params:{
@@ -51,10 +51,12 @@ class Navigation extends React.Component {
       //   console.log(response);
       //   this.setState({images: response.data.results})
       // })
+    onSubmit = (e) => {
+      e.preventDefault();
       this.props.onSubmit(this.state.text)
       this.setState({text:''});
-    } 
-    
+    }
+
     render(){
         return(
           <div className="main">
