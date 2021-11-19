@@ -23,7 +23,6 @@ class App extends React.Component{
 
           headers: {
             Authorization: `Client-ID ${process.env.REACT_APP_CLIENT_ID}`
-            // process.envはREACT＿APPを自動で探してくれるよ！
           }
         }).then((response) => {
           console.log(response);
@@ -76,7 +75,6 @@ class App extends React.Component{
     return (
       <BrowserRouter>
       <Routes>
-        {/* <Route exact path="/" element={<Home images={this.state.images} addNew={this.addFavorite} />} /> */}
         <Route exact path="/" element={<Home images={this.state.images} addNew={this.addFavorite} onSubmit={this.onSubmit}/>} />
         <Route path="/favorite"  element={<FavList favorites={this.state.favorite} deleteFav={this.removeFavorite}/>}/>
       </Routes>
