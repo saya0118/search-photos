@@ -73,7 +73,7 @@ body{
   
     }
   
-      button{
+      .go-back-button, .search-button{
         margin-left: 10px;
         width: 80px;
         height: 40px;
@@ -111,6 +111,21 @@ body{
   
   .container{
     margin: 10px 10%;
+
+    .icon-button{
+
+    }
+
+    .no-result{
+      text-align: center;
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color: $third-color;
+      font-size: 25px;
+
+      @media (max-width: 768px) {
+        font-size: 20px;
+      }
+    }
 
     List{
       @media (max-width: 768px) {

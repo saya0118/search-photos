@@ -17,7 +17,7 @@ function ImageList (props) {
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      setImages(data.results)
+      setImages(data.results);
       })
     // .catch(error => {
     //   console.log(error);
@@ -29,7 +29,7 @@ function ImageList (props) {
         <div className="container">
             <Box sx={{ width: "100%", height: "100vh", overflowY: 'scroll' }}>
               {props.images.length===0 ?
-              <div>
+              <div className="no-result">
                   No Result
               </div> :
             <List variant="masonry" cols={2} gap={8}>

@@ -51,7 +51,7 @@ body {
           height: 30px; } }
       body .main input:focus {
         outline: none; }
-    body .main button {
+    body .main .go-back-button, body .main .search-button {
       margin-left: 10px;
       width: 80px;
       height: 40px;
@@ -64,21 +64,29 @@ body {
       box-shadow: 2px 2px 0 0;
       text-shadow: -1px -1px 1px #f3c323; }
       @media (max-width: 768px) {
-        body .main button {
+        body .main .go-back-button, body .main .search-button {
           font-size: 10px;
           width: 50px;
           height: 30px;
           border-radius: 10px;
           transition: 0.5s; } }
-      body .main button:hover {
+      body .main .go-back-button:hover, body .main .search-button:hover {
         cursor: pointer;
         background-color: #e47a34;
         transition: 0.5s; }
-      body .main button:active {
+      body .main .go-back-button:active, body .main .search-button:active {
         box-shadow: none;
         transform: translate(0, 2px); }
   body .container {
     margin: 10px 10%; }
+    body .container .no-result {
+      text-align: center;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color: #3d2f11;
+      font-size: 25px; }
+      @media (max-width: 768px) {
+        body .container .no-result {
+          font-size: 20px; } }
     @media (max-width: 768px) {
       body .container List {
         columns: 2; } }

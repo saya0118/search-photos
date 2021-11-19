@@ -52,12 +52,32 @@ class App extends React.Component{
       this.setState({favorite: removedFav})
     }
 
+    onSubmit = (query) => {
+      // e.preventDefault();
+      // this.setState({query:this.state.text});
+      axios.get("https://api.unsplash.com/search/photos", {
+        params:{
+          // query: this.state.text,
+          query: query,
+          per_page: 30
+        },
+        headers:{
+          Authorization: `Client-ID ${process.env.REACT_APP_CLIENT_ID}`
+        }
+      }).then((response) => {
+        console.log(response);
+        this.setState({images: response.data.results})
+      })
+      // this.setState({text:''});
+    }
+
   render(){
     console.log(this.state.favorite);
     return (
       <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Home images={this.state.images} addNew={this.addFavorite}/>} />
+        {/* <Route exact path="/" element={<Home images={this.state.images} addNew={this.addFavorite} />} /> */}
+        <Route exact path="/" element={<Home images={this.state.images} addNew={this.addFavorite} onSubmit={this.onSubmit}/>} />
         <Route path="/favorite"  element={<FavList favorites={this.state.favorite} deleteFav={this.removeFavorite}/>}/>
       </Routes>
       </BrowserRouter>

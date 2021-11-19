@@ -3,25 +3,25 @@ import axios from 'axios';
 
 class Navigation extends React.Component {
 
-    state = {images: [], text: '', query:'apple'}
+    state = {text: ''}
 
-    componentDidMount(){
+    // componentDidMount(){
 
-        console.log(process.env);
+    //     console.log(process.env);
     
-        axios.get("https://api.unsplash.com/photos", {
-          params:{
-            per_page: 30
-          },
+    //     axios.get("https://api.unsplash.com/photos", {
+    //       params:{
+    //         per_page: 30
+    //       },
     
-          headers: {
-            Authorization: `Client-ID ${process.env.REACT_APP_CLIENT_ID}`
-            // process.envはREACT＿APPを自動で探してくれるよ！
-          }
-        }).then((response) => {
-          console.log(response);
-          this.setState({images: response.data})
-        })
+    //       headers: {
+    //         Authorization: `Client-ID ${process.env.REACT_APP_CLIENT_ID}`
+    //         // process.envはREACT＿APPを自動で探してくれるよ！
+    //       }
+    //     }).then((response) => {
+    //       console.log(response);
+    //       this.setState({images: response.data})
+    //     })
         // getData(()=>{
           // this.setState({images:items})
         // })
@@ -34,23 +34,24 @@ class Navigation extends React.Component {
       //     setImages(data.results)
       //     })
       // }, [query]
-    }
+    // }
     
     onSubmit = (e) => {
       e.preventDefault();
-      this.setState({query:this.state.text});
-      axios.get("https://api.unsplash.com/search/photos", {
-        params:{
-          query: this.state.text,
-          per_page: 30
-        },
-        headers:{
-          Authorization: `Client-ID ${process.env.REACT_APP_CLIENT_ID}`
-        }
-      }).then((response) => {
-        console.log(response);
-        this.setState({images: response.data.results})
-      })
+      // this.setState({query:this.state.text});
+      // axios.get("https://api.unsplash.com/search/photos", {
+      //   params:{
+      //     query: this.state.text,
+      //     per_page: 30
+      //   },
+      //   headers:{
+      //     Authorization: `Client-ID ${process.env.REACT_APP_CLIENT_ID}`
+      //   }
+      // }).then((response) => {
+      //   console.log(response);
+      //   this.setState({images: response.data.results})
+      // })
+      this.props.onSubmit(this.state.text)
       this.setState({text:''});
     } 
     

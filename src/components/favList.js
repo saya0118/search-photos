@@ -18,7 +18,7 @@ const FavList = props => {
         <div className="nav">
           <h1>My favorite photos!</h1>
           <Link to="/">
-          <button>Go Back</button>
+          <button className="go-back-button">Go Back</button>
           </Link>
         </div>  
 
@@ -41,7 +41,7 @@ const FavList = props => {
             }}
             position="top"
             actionIcon={
-              <IconButton
+              <IconButton className="icon-button"
                 sx={{ color: 'white' }}
                 // aria-label={`star ${title}`}
                 onClick={() => props.deleteFav(image)}
