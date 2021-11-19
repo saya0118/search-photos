@@ -8,7 +8,7 @@ import ImageList from './imageList';
 const Home = (props) => {
     return (
         <div className="Home">
-            <Navigation />
+            <Navigation onSubmit={props.onSubmit}/>
             <Link to="/favorite">
             <button className="fav-button" type="submit">
                 <FavoriteIcon sx={{color: 'deeppink'}}/>
