@@ -15,12 +15,12 @@ class App extends React.Component{
     componentDidMount(){
 
         console.log(process.env);
-    
+
         axios.get("https://api.unsplash.com/photos", {
           params:{
             per_page: 30
           },
-    
+
           headers: {
             Authorization: `Client-ID ${process.env.REACT_APP_CLIENT_ID}`
             // process.envはREACT＿APPを自動で探してくれるよ！
@@ -52,12 +52,26 @@ class App extends React.Component{
       this.setState({favorite: removedFav})
     }
 
+  onSubmit = (query) => {
+    axios.get("https://api.unsplash.com/search/photos", {
+      params:{
+        query: query,
+        per_page: 30
+      },
+      headers:{
+        Authorization: `Client-ID ${process.env.REACT_APP_CLIENT_ID}`
+      }
+    }).then((response) => {
+      this.setState({images: response.data.results})
+    })
+  }
+
   render(){
     console.log(this.state.favorite);
     return (
       <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Home images={this.state.images} addNew={this.addFavorite}/>} />
+        <Route exact path="/" element={<Home images={this.state.images} addNew={this.addFavorite} onSubmit={this.onSubmit}/>} />
         <Route path="/favorite"  element={<FavList favorites={this.state.favorite} deleteFav={this.removeFavorite}/>}/>
       </Routes>
       </BrowserRouter>
