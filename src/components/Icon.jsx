@@ -4,14 +4,15 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import axios from 'axios';
 
-const Icon = ({title}) => {
+const Icon = (props) => {
   const [favorite, setFavorite] = useState(false)
   const [images, setImages] = useState([])
-  
+
 
   const onClick = (e) => {
     e.preventDefault()
-    setFavorite(true)
+    setFavorite(!favorite)
+    props.addNew(props.image);
   }
 
   const getFav = () => {
@@ -27,7 +28,7 @@ const Icon = ({title}) => {
     
     <IconButton
       sx={{ color: 'white' }}
-      aria-label={`star ${title}`}
+      // aria-label={`star ${title}`}
       onClick={onClick}
     >
       {favorite ? <FavoriteIcon sx={{ color: 'deeppink'}}/> : <FavoriteBorderIcon />}

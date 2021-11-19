@@ -1,5 +1,32 @@
 body {
   background-color: #f3c323; }
+  body .fav-button {
+    background-color: #fff7dd;
+    text-shadow: -1px -1px 1px #f3c323;
+    float: right;
+    margin-right: 10%;
+    width: 60px;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 2px 2px 0 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 10px; }
+    @media (max-width: 768px) {
+      body .fav-button {
+        font-size: 7px;
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        transition: 0.5s; } }
+    body .fav-button:hover {
+      cursor: pointer;
+      background-color: #e47a34;
+      transition: 0.5s; }
+    body .fav-button:active {
+      box-shadow: none;
+      transform: translate(0, 2px); }
   body .main {
     margin-top: 40px;
     margin-bottom: 40px;
@@ -48,33 +75,6 @@ body {
         background-color: #e47a34;
         transition: 0.5s; }
       body .main .search-button:active {
-        box-shadow: none;
-        transform: translate(0, 2px); }
-    body .main .fav-button {
-      background-color: #fff7dd;
-      text-shadow: -1px -1px 1px #f3c323;
-      float: right;
-      margin-right: 10%;
-      width: 60px;
-      height: 50px;
-      border-radius: 20px;
-      border: none;
-      box-shadow: 2px 2px 0 0;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      font-weight: bold;
-      font-size: 10px; }
-      @media (max-width: 768px) {
-        body .main .fav-button {
-          font-size: 7px;
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
-          transition: 0.5s; } }
-      body .main .fav-button:hover {
-        cursor: pointer;
-        background-color: #e47a34;
-        transition: 0.5s; }
-      body .main .fav-button:active {
         box-shadow: none;
         transform: translate(0, 2px); }
   body .container {

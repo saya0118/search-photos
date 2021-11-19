@@ -9,22 +9,21 @@ import axios from 'axios';
 import Icon from './Icon';
 
 const FavList = props => {
-  const [favorite, setFavorite] = useState(true);
-  const [favImage, setFavImage] = useState([]);
 
-  const onHandleDelete = (arr) => setFavImage(favImage.filter((x,i)=> i !== arr));
+  // const onHandleDelete = (arr) => setFavImage(favImage.filter((x,i)=> i !== arr));
 
     return(
         <div className="main">
         <div className="nav">
           <h1>My favorite photos!</h1>
-          <input><a>Go Back</a></input>
+          
+          <button><a>Go Back</a></button>
         </div>  
 
         <div className="container">
             <Box sx={{ width: "100%", height: "100vh", overflowY: 'scroll' }}>
-            <List variant="masonry"cols={2} gap={8}>
-                {props.images.map((image, i) => (
+            <List variant="masonry" cols={2} gap={8}>
+                {props.favorites.map((image, i) => (
             <ImageListItem key={image.id}>
             <img
               src={`${image.urls.regular}?w=248&fit=crop&auto=format`}
@@ -42,10 +41,10 @@ const FavList = props => {
             actionIcon={
               <IconButton
                 sx={{ color: 'white' }}
-                aria-label={`star ${title}`}
-                onClick={onClick}
+                // aria-label={`star ${title}`}
+                onClick={() => props.deleteFav(image)}
               >
-              {favorite ? <FavoriteIcon sx={{ color: 'deeppink'}}/> : (onHandleDelete(i))}
+              <FavoriteIcon sx={{ color: 'deeppink'}}/> 
               </IconButton>
             }
             actionPosition="left"

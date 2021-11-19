@@ -7,27 +7,31 @@ import Icon from './Icon';
 
 function ImageList (props) {
   const [favorite, setFavorite] = useState(false);
-  const [images, setImages] = useState([]);
+  // const [images, setImages] = useState([]);
   const [favImage, setFavImage] = useState([]);
   const [error, setError] = useState(false);
 
-  useEffect(() => {
-    console.log('run useEffect');
-    fetch(`https://api.unsplash.com/fav&client_id=${process.env.REACT_APP_CLIENT_ID}`)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      setImages(data.results)
-      })
-    .catch(error => {
-      console.log(error);
-      setError(true);
-    })   
-  }, [!favorite])
+  // useEffect(() => {
+  //   console.log('run useEffect');
+  //   fetch(`https://api.unsplash.com/search/photos?query="apple"&client_id=${process.env.REACT_APP_CLIENT_ID}`)
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     console.log(data);
+  //     // setImages(data.results)
+  //     })
+  //   // .catch(error => {
+  //   //   console.log(error);
+  //   //   setError(true);
+  //   // })   
+  // }, [!favorite])
 
     return(
         <div className="container">
             <Box sx={{ width: "100%", height: "100vh", overflowY: 'scroll' }}>
+              {props.images.length===0 ?
+              <div>
+                  No Result
+              </div> :
             <List variant="masonry" cols={2} gap={8}>
                 {props.images.map((image) => (
             <ImageListItem key={image.id}>
@@ -45,13 +49,14 @@ function ImageList (props) {
             }}
             position="top"
             actionIcon={
-              <Icon/>
+              <Icon addNew={props.addNew} image={image}/>
             }
             actionPosition="left"
           />
             </ImageListItem>
             ))}
             </List>
+              }     
             </Box>
 
         {/* {

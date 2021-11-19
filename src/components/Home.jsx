@@ -5,16 +5,17 @@ import Navigation from './Nav';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ImageList from './imageList';
 
-const Home = () => {
+const Home = (props) => {
     return (
         <div className="Home">
             <Navigation />
-            {/* <Link to="FavList" /> */}
+            <Link to="/favorite">
             <button className="fav-button" type="submit">
                 <FavoriteIcon sx={{color: 'deeppink'}}/>
                 Saved
             </button>
-            <ImageList/>
+            </Link>
+            <ImageList images={props.images} addNew={props.addNew}/>
         </div>
     )
 }
