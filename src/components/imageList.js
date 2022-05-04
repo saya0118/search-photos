@@ -58,24 +58,7 @@ function ImageList (props) {
             </List>
               }     
             </Box>
-
-        {/* {
-          props.images.map(image => (
-            <div key={image.id} className="card">
-              <img src={image.urls.regular} className="card-img" alt=""/>
-              <div className="card-content">
-                <div className="card-title">
-                {image.alt_description}
-              </div>
-            </div>
-            </div>
-          ))
-        } */}
       </div>   
-
-
-
-
     )
 }
 

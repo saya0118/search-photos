@@ -1,12 +1,9 @@
 import React from 'react';
 import '../App.css';
-
 import axios from 'axios';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-
 import Home from './Home';
 import FavList from './favList';
-
 
 class App extends React.Component{
 
